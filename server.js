@@ -106,6 +106,21 @@ const server = http.createServer((req, res) => {
         // Save updated Account List
         fs.writeFileSync(accountsPath, JSON.stringify(accountsData, null, 2));
 
+        console.log("Account successfully created:");
+        console.log("Username:", cleanUsername);
+        console.log("Account ID:", accountId);
+        console.log("Account folder:", accountFolder);
+
+        console.log(
+          "Account List updated:",
+          accountsData.accounts.some((account) => account.id === accountId),
+        );
+
+        console.log(
+          "Account JSON created:",
+          fs.existsSync(path.join(accountFolder, "account.json")),
+        );
+
         // Return success
         res.writeHead(201, {
           "Content-Type": "application/json",
