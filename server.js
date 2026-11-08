@@ -69,6 +69,7 @@ const server = http.createServer((req, res) => {
     "/index.html": ["index.html", "text/html"],
     "/style.css": ["style.css", "text/css"],
     "/login.js": ["login.js", "application/javascript"],
+    "/records.html": ["records.html", "text/html"]
   };
 
   const requestedFile = publicFiles[req.url];
