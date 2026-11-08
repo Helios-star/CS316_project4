@@ -44,9 +44,43 @@ function findAccount(accountId) {
   );
 }
 
-// Helper: Get account file path
 function getAccountFilePath(account) {
-  return path.join(ACCOUNT_FOLDERS, String(account.id), "account.json");
+  const accountFolder = path.join(
+    ACCOUNT_FOLDERS,
+    String(account.folder || account.id)
+  );
+
+  const accountFilePath = path.join(
+    accountFolder,
+    "account.json"
+  );
+
+  // Create folder if it doesn't exist
+  if (!fs.existsSync(accountFolder)) {
+    fs.mkdirSync(accountFolder, { recursive: true });
+  }
+
+  // Create account JSON if it doesn't exist
+  if (!fs.existsSync(accountFilePath)) {
+    const accountData = {
+      id: account.id,
+      username: account.username,
+      password: account.password,
+      createdAt: new Date().toISOString(),
+      formData: {}
+    };
+
+    fs.writeFileSync(
+      accountFilePath,
+      JSON.stringify(accountData, null, 2)
+    );
+
+    console.log(
+      `Created missing account file for ID: ${account.id}`
+    );
+  }
+
+  return accountFilePath;
 }
 
 // Helper: Read request body
