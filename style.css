@@ -91,3 +91,60 @@ button:hover {
 #createAccountBtn:hover {
     background-color: #222;
 }
+
+/* Records Page */
+.records-container {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 50px auto;
+    padding: 30px;
+
+    background-color: white;
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.records-container select {
+    display: block;
+
+    width: 100%;
+    padding: 12px;
+
+    margin: 15px 0 25px;
+
+    font-size: 18px;
+}
+
+#recordsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#recordsTable th,
+#recordsTable td {
+    padding: 12px;
+
+    border: 1px solid #aaa;
+
+    text-align: left;
+}
+
+#recordsTable th {
+    background-color: #0056b3;
+    color: white;
+}
+
+#recordsTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.empty-field {
+    color: #a00000;
+    font-weight: bold;
+}
+
+#recordsMessage {
+    margin-top: 20px;
+}

@@ -6,6 +6,104 @@ const crypto = require("crypto");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
+  if (req.url === "/api/accounts" && req.method === "GET") {
+    try {
+      const accountsPath = path.join(__dirname, "data", "accounts.json");
+
+      const accountsData = JSON.parse(fs.readFileSync(accountsPath, "utf8"));
+
+      // Return IDs only
+      const accounts = accountsData.accounts.map((account) => ({
+        id: account.id,
+      }));
+
+      res.writeHead(200, {
+        "Content-Type": "application/json",
+      });
+
+      res.end(JSON.stringify(accounts));
+    } catch (error) {
+      console.error(error);
+
+      res.writeHead(500, {
+        "Content-Type": "application/json",
+      });
+
+      res.end(
+        JSON.stringify({
+          error: "Unable to retrieve accounts.",
+        }),
+      );
+    }
+
+    return;
+  }
+  if (req.url.startsWith("/api/accounts/") && req.method === "GET") {
+    try {
+      const accountId = decodeURIComponent(req.url.split("/")[3]);
+
+      const accountsPath = path.join(__dirname, "data", "accounts.json");
+
+      const accountsData = JSON.parse(fs.readFileSync(accountsPath, "utf8"));
+
+      // Verify account exists
+      const account = accountsData.accounts.find(
+        (user) => user.id === accountId || String(user.id) === accountId,
+      );
+
+      if (!account) {
+        res.writeHead(404, {
+          "Content-Type": "application/json",
+        });
+
+        res.end(
+          JSON.stringify({
+            error: "Account not found.",
+          }),
+        );
+
+        return;
+      }
+
+      // Read individual account file
+      const accountFilePath = path.join(
+        __dirname,
+        "data",
+        "accounts",
+        String(account.folder || account.id),
+        "account.json",
+      );
+
+      const accountData = JSON.parse(fs.readFileSync(accountFilePath, "utf8"));
+
+      // Return only form information
+      // Never return passwords
+      const safeData = {
+        id: accountData.id,
+        formData: accountData.formData || {},
+      };
+
+      res.writeHead(200, {
+        "Content-Type": "application/json",
+      });
+
+      res.end(JSON.stringify(safeData));
+    } catch (error) {
+      console.error(error);
+
+      res.writeHead(500, {
+        "Content-Type": "application/json",
+      });
+
+      res.end(
+        JSON.stringify({
+          error: "Unable to retrieve account data.",
+        }),
+      );
+    }
+
+    return;
+  }
   // Handle account registration
   if (req.url === "/api/register" && req.method === "POST") {
     let body = "";
@@ -208,9 +306,12 @@ const server = http.createServer((req, res) => {
     "/index.html": ["index.html", "text/html"],
     "/style.css": ["style.css", "text/css"],
     "/login.js": ["login.js", "application/javascript"],
-    "/records.html": ["records.html", "text/html"],
     "/register.html": ["register.html", "text/html"],
     "/register.js": ["register.js", "application/javascript"],
+    "/records.html": ["records.html", "text/html"],
+    "/records.js": ["records.js", "application/javascript"],
+    "/forms.html": ["forms.html", "text/html"],
+    "/forms.js": ["forms.js", "application/javascript"],
   };
 
   const requestedFile = publicFiles[req.url];
