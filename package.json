@@ -1,6 +1,11 @@
 {
-    "name": "21.1",
-    "scripts": {
-        "start": "node server.js"
-    }
+  "name": "cs316-project4",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

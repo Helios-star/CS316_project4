@@ -1,39 +1,37 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
 
-  <title>Login</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-  <link rel="stylesheet" href="/style.css" />
-</head>
+  <body>
+    <main class="login-container">
+      <h1>Login</h1>
 
-<body>
-  <main class="login-container">
-    <h1>Login</h1>
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-    <form id="loginForm">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+        <div class="remember-container">
+          <input type="checkbox" id="rememberUsername" />
 
-      <div class="remember-container">
-        <input type="checkbox" id="rememberUsername" />
+          <label for="rememberUsername"> Remember Username </label>
+        </div>
 
-        <label for="rememberUsername"> Remember Username </label>
-      </div>
+        <button type="submit">Login</button>
+      </form>
 
-      <button type="submit">Login</button>
-    </form>
+      <button type="button" id="createAccountBtn">Create Account</button>
+    </main>
 
-    <button type="button" id="createAccountBtn">Create Account</button>
-  </main>
-
-  <script src="/login.js"></script>
-</body>
-
+    <script src="/login.js"></script>
+  </body>
 </html>

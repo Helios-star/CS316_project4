@@ -47,13 +47,10 @@ function findAccount(accountId) {
 function getAccountFilePath(account) {
   const accountFolder = path.join(
     ACCOUNT_FOLDERS,
-    String(account.folder || account.id)
+    String(account.folder || account.id),
   );
 
-  const accountFilePath = path.join(
-    accountFolder,
-    "account.json"
-  );
+  const accountFilePath = path.join(accountFolder, "account.json");
 
   // Create folder if it doesn't exist
   if (!fs.existsSync(accountFolder)) {
@@ -67,17 +64,12 @@ function getAccountFilePath(account) {
       username: account.username,
       password: account.password,
       createdAt: new Date().toISOString(),
-      formData: {}
+      formData: {},
     };
 
-    fs.writeFileSync(
-      accountFilePath,
-      JSON.stringify(accountData, null, 2)
-    );
+    fs.writeFileSync(accountFilePath, JSON.stringify(accountData, null, 2));
 
-    console.log(
-      `Created missing account file for ID: ${account.id}`
-    );
+    console.log(`Created missing account file for ID: ${account.id}`);
   }
 
   return accountFilePath;

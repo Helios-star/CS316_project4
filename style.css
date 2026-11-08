@@ -1,150 +1,224 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
 
-    background-color: #f4f4f4;
-    color: #222;
+  background-color: #f4f4f4;
+  color: #222;
 }
 
 .login-container {
-    width: 90%;
-    max-width: 450px;
+  width: 90%;
+  max-width: 450px;
 
-    margin: 100px auto;
-    padding: 30px;
+  margin: 100px auto;
+  padding: 30px;
 
-    background-color: white;
+  background-color: white;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 label {
-    display: block;
-    margin-top: 15px;
+  display: block;
+  margin-top: 15px;
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
 
-    font-size: 18px;
+  font-size: 18px;
 
-    border: 1px solid #777;
-    border-radius: 5px;
+  border: 1px solid #777;
+  border-radius: 5px;
 }
 
 .remember-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .remember-container label {
-    margin: 0;
+  margin: 0;
 }
 
 .remember-container input {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
+  width: 100%;
+  padding: 12px;
 
-    margin-top: 15px;
+  margin-top: 15px;
 
-    font-size: 18px;
+  font-size: 18px;
 
-    background-color: #0056b3;
-    color: white;
+  background-color: #0056b3;
+  color: white;
 
-    border: none;
-    border-radius: 5px;
+  border: none;
+  border-radius: 5px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #003d80;
+  background-color: #003d80;
 }
 
 #createAccountBtn {
-    background-color: #444;
+  background-color: #444;
 }
 
 #createAccountBtn:hover {
-    background-color: #222;
+  background-color: #222;
 }
 
 /* Records Page */
 .records-container {
-    width: 90%;
-    max-width: 900px;
+  width: 90%;
+  max-width: 900px;
 
-    margin: 50px auto;
-    padding: 30px;
+  margin: 50px auto;
+  padding: 30px;
 
-    background-color: white;
-    border-radius: 10px;
+  background-color: white;
+  border-radius: 10px;
 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .records-container select {
-    display: block;
+  display: block;
 
-    width: 100%;
-    padding: 12px;
+  width: 100%;
+  padding: 12px;
 
-    margin: 15px 0 25px;
+  margin: 15px 0 25px;
 
-    font-size: 18px;
+  font-size: 18px;
 }
 
 #recordsTable {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 #recordsTable th,
 #recordsTable td {
-    padding: 12px;
+  padding: 12px;
 
-    border: 1px solid #aaa;
+  border: 1px solid #aaa;
 
-    text-align: left;
+  text-align: left;
 }
 
 #recordsTable th {
-    background-color: #0056b3;
-    color: white;
+  background-color: #0056b3;
+  color: white;
 }
 
 #recordsTable tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .empty-field {
-    color: #a00000;
-    font-weight: bold;
+  color: #a00000;
+  font-weight: bold;
 }
 
 #recordsMessage {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+/* Form Page */
+
+.form-container {
+  width: 90%;
+  max-width: 750px;
+
+  margin: 50px auto;
+  padding: 30px;
+
+  background-color: white;
+  border-radius: 10px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+fieldset {
+  border: 2px solid #0056b3;
+  border-radius: 8px;
+
+  padding: 20px;
+}
+
+legend {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.form-container label {
+  display: block;
+  margin-top: 15px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 12px;
+
+  margin-top: 5px;
+
+  font-size: 18px;
+
+  border: 1px solid #777;
+  border-radius: 5px;
+}
+
+.form-container textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-container input[type="radio"],
+.form-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+#formMessage {
+  margin-top: 20px;
+  font-weight: bold;
 }
