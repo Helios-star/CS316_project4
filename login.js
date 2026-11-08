@@ -6,91 +6,66 @@ const rememberCheckbox = document.getElementById("rememberUsername");
 const createAccountBtn = document.getElementById("createAccountBtn");
 
 // Load saved checkbox status
-rememberCheckbox.checked =
-    localStorage.getItem("rememberUsername") === "true";
+rememberCheckbox.checked = localStorage.getItem("rememberUsername") === "true";
 
 // Load saved username
 if (rememberCheckbox.checked) {
-    usernameInput.value =
-        localStorage.getItem("savedUsername") || "";
+  usernameInput.value = localStorage.getItem("savedUsername") || "";
 }
 
 // Remember checkbox changes
 rememberCheckbox.addEventListener("change", () => {
+  localStorage.setItem("rememberUsername", rememberCheckbox.checked);
 
-    localStorage.setItem(
-        "rememberUsername",
-        rememberCheckbox.checked
-    );
-
-    if (rememberCheckbox.checked) {
-        localStorage.setItem(
-            "savedUsername",
-            usernameInput.value
-        );
-    } else {
-        localStorage.removeItem("savedUsername");
-    }
-
+  if (rememberCheckbox.checked) {
+    localStorage.setItem("savedUsername", usernameInput.value);
+  } else {
+    localStorage.removeItem("savedUsername");
+  }
 });
 
 // Update saved username while typing
 usernameInput.addEventListener("input", () => {
-
-    if (rememberCheckbox.checked) {
-        localStorage.setItem(
-            "savedUsername",
-            usernameInput.value
-        );
-    }
-
+  if (rememberCheckbox.checked) {
+    localStorage.setItem("savedUsername", usernameInput.value);
+  }
 });
 
 // Login button
 loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    event.preventDefault();
+  const username = usernameInput.value;
+  const password = passwordInput.value;
 
-    const username = usernameInput.value;
-    const password = passwordInput.value;
+  try {
+    const response = await fetch("/api/login", {
+      method: "POST",
 
-    try {
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        const response = await fetch("/api/login", {
-            method: "POST",
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+    const result = await response.json();
 
-            body: JSON.stringify({
-                username,
-                password
-            })
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-
-            window.location.href = "/records.html";
-
-        } else {
-
-            alert("Incorrect username or password.");
-
-        }
-
-    } catch (error) {
-
-        console.error(error);
-        alert("Unable to connect to server.");
-
+    if (result.success) {
+      window.location.href = "/records.html";
+    } else {
+      alert("Incorrect username or password.");
     }
-
+  } catch (error) {
+    console.error(error);
+    alert("Unable to connect to server.");
+  }
 });
 
 // Create Account button
 createAccountBtn.addEventListener("click", () => {
-    window.location.href = "/register.html";
+  window.location.href = "/register.html";
 });
