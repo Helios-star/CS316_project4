@@ -1,15 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Records</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <main>
-        <h1>Records Page</h1>
-        <p>Login successful!</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Account Records</title>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <main class="records-container">
+      <h1>Account Records</h1>
+
+      <!-- Form Page Link -->
+      <p>
+        <a href="/forms.html">Go to Form Page</a>
+      </p>
+
+      <!-- Account Selection -->
+      <label for="accountSelect"> Select Account ID: </label>
+
+      <select id="accountSelect">
+        <option value="">-- Select an Account --</option>
+      </select>
+
+      <!-- Records Table -->
+      <div id="recordsContainer">
+        <table id="recordsTable">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+
+          <tbody id="recordsBody"></tbody>
+        </table>
+      </div>
+
+      <p id="recordsMessage"></p>
     </main>
-</body>
+
+    <script src="/records.js"></script>
+  </body>
 </html>
