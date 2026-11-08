@@ -1,11 +1,93 @@
-html {
-    font-size: 18px;
+* {
+    box-sizing: border-box;
 }
 
 body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
     background-color: #f4f4f4;
     color: #222;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
+}
+
+.login-container {
+    width: 90%;
+    max-width: 450px;
+
+    margin: 100px auto;
+    padding: 30px;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+
+    font-size: 18px;
+
+    border: 1px solid #777;
+    border-radius: 5px;
+}
+
+.remember-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+.remember-container label {
+    margin: 0;
+}
+
+.remember-container input {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+
+    margin-top: 15px;
+
+    font-size: 18px;
+
+    background-color: #0056b3;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #003d80;
+}
+
+#createAccountBtn {
+    background-color: #444;
+}
+
+#createAccountBtn:hover {
+    background-color: #222;
 }
