@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Account Form</title>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <main class="form-container">
+      <h1>Account Information Form</h1>
+
+      <p>
+        <a href="/records.html">View Records</a>
+      </p>
+
+      <form id="accountForm">
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <!-- Text Input -->
+          <label for="fullName">Full Name:</label>
+
+          <input type="text" id="fullName" name="fullName" />
+
+          <!-- Number Input -->
+          <label for="age">Age:</label>
+
+          <input type="number" id="age" name="age" min="0" max="120" />
+
+          <!-- Dropdown -->
+          <label for="favoriteColor"> Favorite Color: </label>
+
+          <select id="favoriteColor" name="favoriteColor">
+            <option value="">Select a color</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Purple">Purple</option>
+          </select>
+
+          <!-- Radio Buttons -->
+          <p>Preferred Contact Method:</p>
+
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="contactMethod" value="Email" />
+              Email
+            </label>
+
+            <label>
+              <input type="radio" name="contactMethod" value="Phone" />
+              Phone
+            </label>
+
+            <label>
+              <input type="radio" name="contactMethod" value="Text" />
+              Text
+            </label>
+          </div>
+
+          <!-- Checkbox -->
+          <label class="checkbox-label">
+            <input type="checkbox" id="newsletter" name="newsletter" />
+
+            Subscribe to Newsletter
+          </label>
+
+          <!-- Multiline Text -->
+          <label for="comments"> Additional Comments: </label>
+
+          <textarea id="comments" name="comments" rows="6" cols="40"></textarea>
+        </fieldset>
+
+        <button type="submit">Submit Form</button>
+      </form>
+
+      <p id="formMessage" role="status"></p>
+    </main>
+
+    <script src="/forms.js"></script>
+  </body>
+</html>
