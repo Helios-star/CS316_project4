@@ -5,8 +5,10 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
+
   // Handle login requests
   if (req.url === "/api/login" && req.method === "POST") {
+
     let body = "";
 
     req.on("data", (chunk) => {
@@ -21,13 +23,15 @@ const server = http.createServer((req, res) => {
         const accountsData = JSON.parse(
           fs.readFileSync(
             path.join(__dirname, "data", "accounts.json"),
-            "utf8",
-          ),
+            "utf8"
+          )
         );
 
         // Find matching account
         const account = accountsData.accounts.find(
-          (user) => user.username === username && user.password === password,
+          (user) =>
+            user.username === username &&
+            user.password === password
         );
 
         res.writeHead(200, {
@@ -37,9 +41,11 @@ const server = http.createServer((req, res) => {
         res.end(
           JSON.stringify({
             success: !!account,
-          }),
+          })
         );
+
       } catch (error) {
+
         console.error(error);
 
         res.writeHead(500, {
@@ -49,7 +55,7 @@ const server = http.createServer((req, res) => {
         res.end(
           JSON.stringify({
             success: false,
-          }),
+          })
         );
       }
     });
@@ -76,25 +82,9 @@ const server = http.createServer((req, res) => {
   const [filename, contentType] = requestedFile;
 
   fs.readFile(path.join(__dirname, filename), (err, data) => {
+
     if (err) {
       res.writeHead(404);
-      res.end("404 - Not Found");
-      return;
-    }
-
-    res.writeHead(200, {
-      "Content-Type": contentType,
-    });
-
-    res.end(data);
-  });
-
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(404, {
-        "Content-Type": "text/plain",
-      });
-
       res.end("404 - File Not Found");
       return;
     }
@@ -104,9 +94,11 @@ const server = http.createServer((req, res) => {
     });
 
     res.end(data);
+
   });
+
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
